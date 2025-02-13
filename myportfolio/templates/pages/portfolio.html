@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John Doe | Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Header Styles */
+      .hero {
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        animation: slideDown 1s ease;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: slideUp 1s ease;
+      }
+
+      /* Projects Section */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        color: #2c3e50;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: #3498db;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .portfolio-item {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        position: relative;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .portfolio-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-content {
+        padding: 1.5rem;
+      }
+
+      .portfolio-content h3 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
+      .portfolio-content p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(52, 152, 219, 0.9);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .portfolio-item:hover .overlay {
+        opacity: 1;
+      }
+
+      /* Skills Section */
+      .skills-section {
+        background: #f8f9fa;
+        padding: 80px 0;
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 20px;
+      }
+
+      .skill-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .skill-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #3498db;
+      }
+
+      .skill-card h4 {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .skill-card p {
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      .skill-level {
+        background: #eee;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(to right, #3498db, #2980b9);
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      /* Animations */
+      @keyframes slideDown {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 2rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <h1>Mark Fredel R. Aducal</h1>
+        <p>Bachelor of Science in Information Technology 3rd Year</p>
+        <p>Full Stack Developer & UI/UX Designer</p>
+      </div>
+    </header>
+
+    <section class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img
+            src="https://source.unsplash.com/random/800x600"
+            alt="Project 1"
+            class="portfolio-img"
+          />
+          <div class="overlay">
+            <div>
+              <h3>E-commerce Platform</h3>
+              <p>Built with React & Node.js</p>
+              <button
+                style="
+                  margin-top: 1rem;
+                  padding: 0.5rem 1.5rem;
+                  background: white;
+                  border: none;
+                  border-radius: 20px;
+                  cursor: pointer;
+                "
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>E-commerce Platform</h3>
+            <p>
+              Full-stack e-commerce solution with payment gateway integration
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img
+            src="https://source.unsplash.com/random/800x601"
+            alt="Project 2"
+            class="portfolio-img"
+          />
+          <div class="overlay">
+            <div>
+              <h3>Task Management App</h3>
+              <p>Built with MERN Stack</p>
+              <button
+                style="
+                  margin-top: 1rem;
+                  padding: 0.5rem 1.5rem;
+                  background: white;
+                  border: none;
+                  border-radius: 20px;
+                  cursor: pointer;
+                "
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>Task Management App</h3>
+            <p>Real-time collaborative task management application</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img
+            src="https://source.unsplash.com/random/800x602"
+            alt="Project 3"
+            class="portfolio-img"
+          />
+          <div class="overlay">
+            <div>
+              <h3>Social Media Dashboard</h3>
+              <p>Built with React & Firebase</p>
+              <button
+                style="
+                  margin-top: 1rem;
+                  padding: 0.5rem 1.5rem;
+                  background: white;
+                  border: none;
+                  border-radius: 20px;
+                  cursor: pointer;
+                "
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>Social Media Dashboard</h3>
+            <p>Analytics dashboard for social media metrics tracking</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+          <div class="skill-card">
+            <i class="fab fa-angular skill-icon"></i>
+            <h4>Angular</h4>
+            <p>Frontend Development</p>
+            <div class="skill-level">
+              <div class="progress-bar" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-js skill-icon"></i>
+            <h4>JavaScript</h4>
+            <p>Web Development</p>
+            <div class="skill-level">
+              <div class="progress-bar" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-php skill-icon"></i>
+            <h4>PHP</h4>
+            <p>Backend Development</p>
+            <div class="skill-level">
+              <div class="progress-bar" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
