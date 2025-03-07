@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load custom_filters %} {% block title %}Dashboard
+Overview{% endblock %} {% block content %}
+<div class="container-fluid">
+  <h2 class="mb-4">Dashboard Overview</h2>
+
+  <div class="row g-4">
+    {% for item in data %}
+    <div class="col-md-4">
+      <div class="dashboard-card">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <div class="card-value">
+          {% if item.title == 'Revenue' %} {{ item.count|format_count:True }} {%
+          else %} {{ item.count|format_count }} {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

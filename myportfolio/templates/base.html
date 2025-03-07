@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Welcome{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .sidebar {
+        min-height: 100vh;
+        background-color: #212529;
+        color: white;
+        padding-top: 20px;
+      }
+      .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+        padding: 10px 15px;
+        transition: all 0.3s;
+      }
+      .nav-link:hover {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .welcome-section {
+        padding: 60px 0;
+        text-align: center;
+      }
+      .feature-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.2s;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+    </style>
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body class="bg-light">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar">
+          <h3 class="px-3 mb-4">Navigation</h3>
+          <div class="nav flex-column">
+            <a href="{% url 'portfolio:base' %}" class="nav-link">
+              <i class="fas fa-home"></i> Home
+            </a>
+            <a href="{% url 'portfolio:dashboard' %}" class="nav-link">
+              <i class="fas fa-chart-bar"></i> Dashboard
+            </a>
+            <a href="{% url 'portfolio:index' %}" class="nav-link">
+              <i class="fas fa-user"></i> Portfolio
+            </a>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10 p-4">
+          {% block content %}
+          <!-- Default content for base.html -->
+          <div class="welcome-section">
+            <h1 class="display-4 mb-4">Welcome to Your Dashboard</h1>
+            <p class="lead mb-5">
+              Select an option from the sidebar to get started
+            </p>
+
+            <div class="row mt-5">
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
+                  <h3>Dashboard</h3>
+                  <p>View your statistics and analytics</p>
+                  <a
+                    href="{% url 'portfolio:dashboard' %}"
+                    class="btn btn-primary"
+                    >Go to Dashboard</a
+                  >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-user fa-3x mb-3 text-success"></i>
+                  <h3>Portfolio</h3>
+                  <p>Check out your portfolio</p>
+                  <a href="{% url 'portfolio:index' %}" class="btn btn-success"
+                    >View Portfolio</a
+                  >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-cog fa-3x mb-3 text-info"></i>
+                  <h3>Settings</h3>
+                  <p>Manage your preferences</p>
+                  <a href="#" class="btn btn-info text-white">Settings</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>
